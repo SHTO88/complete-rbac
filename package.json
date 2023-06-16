@@ -1,0 +1,21 @@
+{
+  "name": "complete-rbac",
+  "version": "1.0.0",
+  "description": "Role-Based Access Control",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "keywords": [
+    "rbac",
+    "access control",
+    "authorization",
+    "security"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.1.3"
+  }
+}
