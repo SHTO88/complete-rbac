@@ -1,6 +1,6 @@
 # RBAC (Role-Based Access Control)
 
-RBAC is a super lightweight npm package that provides Role-Based Access Control functionality. It allows you to define roles and permissions, and check whether a role has permission for a specific action.
+RBAC is a super lightweight npm package written in typescript that provides Role-Based Access Control functionality. It allows you to define roles and permissions, and check whether a role has permission for a specific action.
 
 ## Installation
 
