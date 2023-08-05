@@ -35,9 +35,7 @@ const rbac = new RBAC(rbac_rules);
 
 // Check permissions
 console.log(rbac.can('user', 'blog:read')); // Output: true
-console.log(rbac.can('admin', 'comments:create')); // Output: true
 console.log(rbac.can('admin', 'blog:delete')); // Output: false
-console.log(rbac.can('superadmin', 'users:delete')); // Output: true
-console.log(rbac.can('superadmin', 'admin:somePermission')); // Output: true
+console.log(rbac.can('user', ["blog:read", "blog:delete"])); // Output: true
 
 ```

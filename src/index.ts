@@ -23,20 +23,26 @@ class RBAC {
     return null;
   }
 
-  private checkPermission(role: string, permission: string): boolean {
+  private checkPermission(
+    role: string,
+    permission: string | string[]
+  ): boolean {
     const roleDefinition = this.getRole(role);
     if (roleDefinition) {
-      if (
-        roleDefinition.can.includes(permission) ||
-        roleDefinition.can.includes("*")
-      ) {
-        return true;
-      } else if (roleDefinition.can.some((p) => p.endsWith(":*"))) {
-        const wildcardPrefix = permission.split(":")[0] + ":";
-        return roleDefinition.can.some((p) => p.startsWith(wildcardPrefix));
-      } else if (roleDefinition.inherits) {
+      const permissions = Array.isArray(permission) ? permission : [permission];
+      for (const perm of permissions) {
+        const premWildcardPrefix = perm.split(":")[0] + ":*";
+        if (
+          roleDefinition.can.includes(perm) ||
+          roleDefinition.can.includes(premWildcardPrefix) ||
+          roleDefinition.can.includes("*")
+        ) {
+          return true;
+        }
+      }
+      if (roleDefinition.inherits) {
         for (const inheritedRole of roleDefinition.inherits) {
-          if (this.checkPermission(inheritedRole, permission)) {
+          if (this.checkPermission(inheritedRole, permissions)) {
             return true;
           }
         }
@@ -45,7 +51,7 @@ class RBAC {
     return false;
   }
 
-  public can(role: string | undefined, permission: string): boolean {
+  public can(role: string | undefined, permission: string | string[]): boolean {
     if (!role) {
       return false;
     }
