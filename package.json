@@ -1,6 +1,6 @@
 {
   "name": "complete-rbac",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Role-Based Access Control",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

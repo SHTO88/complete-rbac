@@ -10,6 +10,6 @@ declare class RBAC {
     private roleExists;
     private getRole;
     private checkPermission;
-    can(role: string | undefined, permission: string): boolean;
+    can(role: string | undefined, permission: string | string[]): boolean;
 }
 export default RBAC;
