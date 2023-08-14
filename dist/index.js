@@ -36,7 +36,7 @@ class RBAC {
         return false;
     }
     can(role, permission) {
-        if (!role) {
+        if (!role || !permission) {
             return false;
         }
         return this.checkPermission(role, permission);

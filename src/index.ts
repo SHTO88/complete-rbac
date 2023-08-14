@@ -52,7 +52,7 @@ class RBAC {
   }
 
   public can(role: string | undefined, permission: string | string[]): boolean {
-    if (!role) {
+    if (!role || !permission) {
       return false;
     }
     return this.checkPermission(role, permission);
